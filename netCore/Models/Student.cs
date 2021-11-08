@@ -7,8 +7,11 @@ namespace netCore.Models
     public class Student
     {
         [Key]
+        [Display(Name ="ID")]
         public string  StudentID{ get; set; }
+        [Display(Name ="Sinh viên")]
         public string StudentName { get; set; }
+        [Display(Name ="địa chỉ")]
          public string Address { get; set; }
     }
 }

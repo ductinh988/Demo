@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using netCore.Models;
+// namespace 
+namespace netCore.Data{
 
     public class MvcMovieContext : DbContext
     {
@@ -22,3 +24,4 @@ using netCore.Models;
 
         public DbSet<netCore.Models.Employee> Employee { get; set; }
     }
+}

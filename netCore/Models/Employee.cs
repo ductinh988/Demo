@@ -8,7 +8,9 @@ namespace netCore.Models
     {
         [Key]
         public string  EmployeeID { get; set; }
+        [Display(Name ="Nhân viên")]
         public string EmployeeName { get; set; }
+        [Display(Name ="số điện thoại")]
          public string PhoneNumber { get; set; }
     }
 }

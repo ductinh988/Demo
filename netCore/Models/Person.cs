@@ -7,7 +7,9 @@ namespace netCore.Models
     public class Person
     {
         [Key]
+        [Display (Name ="ID")]
         public string  PersonID{ get; set; }
+        [Display (Name ="tên")]
         public string PersonName { get; set; }
     }
 }
