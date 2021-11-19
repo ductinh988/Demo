@@ -16,12 +16,35 @@ namespace netCore.Data{
 
         public DbSet<netCore.Models.Movie> Movie { get; set; }
 
+
+
+    
+
+        public DbSet<netCore.Models.Employee> Employee { get; set; }
+
+
+
+    
+
         public DbSet<netCore.Models.Person> Person { get; set; }
 
-        public DbSet<netCore.Models.Product> Product { get; set; }
+
+
+    
 
         public DbSet<netCore.Models.Student> Student { get; set; }
 
-        public DbSet<netCore.Models.Employee> Employee { get; set; }
+
+
+    
+
+        public DbSet<netCore.Models.Category> Category { get; set; }
+
+
+
+    
+
+        public DbSet<netCore.Models.Product> Product { get; set; }
+
     }
 }

@@ -16,45 +16,21 @@ namespace netCore.Models
                     DbContextOptions<MvcMovieContext>>()))
             {
                 // Look for any movies.
-                if (context.Product.Any())
-                {
-                    return;   // DB has been seeded
-                }
+                // if (context.Person.Any())
+                // {
+                //     return;   // DB has been seeded
+                // }
 
-                context.Product.AddRange(
-                    new Product
-                    {
-                        ProductID = "001",
-                        ProductName = "Vũ Văn Nhân",
-                        UnitPrice = "oi bạn ơi",
-                        Quantity = "123"
-                    },
+                // context.Pe.AddRange(
+                   
+                //     },
 
-                    new Product
-                    {
-                        ProductID = "002 ",
-                        ProductName = "Đinh Thế Du",
-                        UnitPrice = "Comedy",
-                        Quantity = "345"
-                    },
-
-                    new Product
-                    {
-                        ProductID = "003",
-                        ProductName = "Nguyễn Quang Anh",
-                        UnitPrice = "Comedy",
-                        Quantity = "678"
-                    },
-
-                    new Product
-                    {
-                        ProductID = "004",
-                        ProductName = "Vũ Văn Đức",
-                        UnitPrice = "Western",
-                        Quantity = "JQK"
-                    }
-                );
-                context.SaveChanges();
+                //     new Student
+                //     {
+                        
+                //     }
+                // );
+                // context.SaveChanges();
             }
         }
     }

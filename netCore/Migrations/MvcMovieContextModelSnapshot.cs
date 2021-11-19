@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using netCore.Data;
 
-
 namespace netCore.Migrations
 {
     [DbContext(typeof(MvcMovieContext))]
@@ -16,6 +15,19 @@ namespace netCore.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.11");
+
+            modelBuilder.Entity("netCore.Models.Category", b =>
+                {
+                    b.Property<string>("CategoryID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("CategoryName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CategoryID");
+
+                    b.ToTable("Category");
+                });
 
             modelBuilder.Entity("netCore.Models.Employee", b =>
                 {
@@ -58,15 +70,16 @@ namespace netCore.Migrations
 
             modelBuilder.Entity("netCore.Models.Person", b =>
                 {
-                    b.Property<string>("PersonID")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("PersonID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
-                    b.Property<string>("PersonName")
+                    b.Property<string>("Fullname")
                         .HasColumnType("TEXT");
 
                     b.HasKey("PersonID");
 
-                    b.ToTable("Person");
+                    b.ToTable("People");
                 });
 
             modelBuilder.Entity("netCore.Models.Product", b =>
@@ -74,34 +87,53 @@ namespace netCore.Migrations
                     b.Property<string>("ProductID")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("CategoryID")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("ProductName")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Quantity")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("UnitPrice")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("ProductID");
+
+                    b.HasIndex("CategoryID");
 
                     b.ToTable("Product");
                 });
 
             modelBuilder.Entity("netCore.Models.Student", b =>
                 {
-                    b.Property<string>("StudentID")
-                        .HasColumnType("TEXT");
+                    b.HasBaseType("netCore.Models.Person");
 
-                    b.Property<string>("Address")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("StudentID")
+                        .HasColumnType("INTEGER");
 
-                    b.Property<string>("StudentName")
+                    b.Property<string>("University")
                         .HasColumnType("TEXT");
-
-                    b.HasKey("StudentID");
 
                     b.ToTable("Student");
+                });
+
+            modelBuilder.Entity("netCore.Models.Product", b =>
+                {
+                    b.HasOne("netCore.Models.Category", "Category")
+                        .WithMany("Products")
+                        .HasForeignKey("CategoryID");
+
+                    b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("netCore.Models.Student", b =>
+                {
+                    b.HasOne("netCore.Models.Person", null)
+                        .WithOne()
+                        .HasForeignKey("netCore.Models.Student", "PersonID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("netCore.Models.Category", b =>
+                {
+                    b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
         }

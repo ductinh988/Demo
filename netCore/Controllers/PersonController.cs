@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using netCore.Models;
 using netCore.Data;
-
+using netCore.Models;
 
 namespace netCore.Controllers
 {
@@ -27,7 +26,7 @@ namespace netCore.Controllers
         }
 
         // GET: Person/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -55,7 +54,7 @@ namespace netCore.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PersonID,PersonName")] Person person)
+        public async Task<IActionResult> Create([Bind("PersonID,Fullname")] Person person)
         {
             if (ModelState.IsValid)
             {
@@ -67,7 +66,7 @@ namespace netCore.Controllers
         }
 
         // GET: Person/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -87,7 +86,7 @@ namespace netCore.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("PersonID,PersonName")] Person person)
+        public async Task<IActionResult> Edit(int id, [Bind("PersonID,Fullname")] Person person)
         {
             if (id != person.PersonID)
             {
@@ -118,7 +117,7 @@ namespace netCore.Controllers
         }
 
         // GET: Person/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -138,7 +137,7 @@ namespace netCore.Controllers
         // POST: Person/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var person = await _context.Person.FindAsync(id);
             _context.Person.Remove(person);
@@ -146,7 +145,7 @@ namespace netCore.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool PersonExists(string id)
+        private bool PersonExists(int id)
         {
             return _context.Person.Any(e => e.PersonID == id);
         }
