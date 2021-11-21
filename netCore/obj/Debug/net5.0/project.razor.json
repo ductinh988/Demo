@@ -15634,8 +15634,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "d:\\NetCore\\netCore\\Views\\Accounts\\Delete.cshtml",
+      "TargetPath": "Views\\Accounts\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "d:\\NetCore\\netCore\\Views\\Category\\Create.cshtml",
       "TargetPath": "Views\\Category\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\NetCore\\netCore\\Views\\Accounts\\Details.cshtml",
+      "TargetPath": "Views\\Accounts\\Details.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15646,6 +15656,11 @@
     {
       "FilePath": "d:\\NetCore\\netCore\\Views\\HelloWorld\\Demo.cshtml",
       "TargetPath": "Views\\HelloWorld\\Demo.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\NetCore\\netCore\\Views\\Accounts\\Index.cshtml",
+      "TargetPath": "Views\\Accounts\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15666,6 +15681,11 @@
     {
       "FilePath": "d:\\NetCore\\netCore\\Views\\Person\\Delete.cshtml",
       "TargetPath": "Views\\Person\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\NetCore\\netCore\\Views\\Accounts\\Create.cshtml",
+      "TargetPath": "Views\\Accounts\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15766,6 +15786,11 @@
     {
       "FilePath": "d:\\NetCore\\netCore\\Views\\Employee\\Details.cshtml",
       "TargetPath": "Views\\Employee\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\NetCore\\netCore\\Views\\Accounts\\Edit.cshtml",
+      "TargetPath": "Views\\Accounts\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {

@@ -10,85 +10,90 @@ using netCore.Models;
 
 namespace netCore.Controllers
 {
-    public class MoviesController : Controller
+    public class AccountsController : Controller
     {
         private readonly MvcMovieContext _context;
 
-        public MoviesController(MvcMovieContext context)
+        public AccountsController(MvcMovieContext context)
         {
             _context = context;
         }
 
-        // GET: Movies
+        // GET: Accounts
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Movie.ToListAsync());
+            var mvcMovieContext = _context.Account.Include(a => a.Category);
+            return View(await mvcMovieContext.ToListAsync());
         }
 
-        // GET: Movies/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: Accounts/Details/5
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var movie = await _context.Movie
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (movie == null)
+            var account = await _context.Account
+                .Include(a => a.Category)
+                .FirstOrDefaultAsync(m => m.AccountID == id);
+            if (account == null)
             {
                 return NotFound();
             }
 
-            return View(movie);
+            return View(account);
         }
 
-        // GET: Movies/Create
+        // GET: Accounts/Create
         public IActionResult Create()
         {
+            ViewData["CategoryID"] = new SelectList(_context.Category, "CategoryID", "CategoryID");
             return View();
         }
 
-        // POST: Movies/Create
+        // POST: Accounts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title")] Movie movie)
+        public async Task<IActionResult> Create([Bind("AccountID,AccountName,CategoryID")] Account account)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(movie);
+                _context.Add(account);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(movie);
+            ViewData["CategoryID"] = new SelectList(_context.Category, "CategoryID", "CategoryID", account.CategoryID);
+            return View(account);
         }
 
-        // GET: Movies/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        // GET: Accounts/Edit/5
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var movie = await _context.Movie.FindAsync(id);
-            if (movie == null)
+            var account = await _context.Account.FindAsync(id);
+            if (account == null)
             {
                 return NotFound();
             }
-            return View(movie);
+            ViewData["CategoryID"] = new SelectList(_context.Category, "CategoryID", "CategoryID", account.CategoryID);
+            return View(account);
         }
 
-        // POST: Movies/Edit/5
+        // POST: Accounts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title")] Movie movie)
+        public async Task<IActionResult> Edit(string id, [Bind("AccountID,AccountName,CategoryID")] Account account)
         {
-            if (id != movie.Id)
+            if (id != account.AccountID)
             {
                 return NotFound();
             }
@@ -97,12 +102,12 @@ namespace netCore.Controllers
             {
                 try
                 {
-                    _context.Update(movie);
+                    _context.Update(account);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MovieExists(movie.Id))
+                    if (!AccountExists(account.AccountID))
                     {
                         return NotFound();
                     }
@@ -113,41 +118,43 @@ namespace netCore.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(movie);
+            ViewData["CategoryID"] = new SelectList(_context.Category, "CategoryID", "CategoryID", account.CategoryID);
+            return View(account);
         }
 
-        // GET: Movies/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // GET: Accounts/Delete/5
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var movie = await _context.Movie
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (movie == null)
+            var account = await _context.Account
+                .Include(a => a.Category)
+                .FirstOrDefaultAsync(m => m.AccountID == id);
+            if (account == null)
             {
                 return NotFound();
             }
 
-            return View(movie);
+            return View(account);
         }
 
-        // POST: Movies/Delete/5
+        // POST: Accounts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var movie = await _context.Movie.FindAsync(id);
-            _context.Movie.Remove(movie);
+            var account = await _context.Account.FindAsync(id);
+            _context.Account.Remove(account);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MovieExists(int id)
+        private bool AccountExists(string id)
         {
-            return _context.Movie.Any(e => e.Id == id);
+            return _context.Account.Any(e => e.AccountID == id);
         }
     }
 }

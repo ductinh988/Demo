@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using netCore.Models;
 using netCore.Data;
-
+using netCore.Models;
 
 namespace netCore.Controllers
 {
@@ -27,7 +26,7 @@ namespace netCore.Controllers
         }
 
         // GET: Employee/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -35,7 +34,7 @@ namespace netCore.Controllers
             }
 
             var employee = await _context.Employee
-                .FirstOrDefaultAsync(m => m.EmployeeID == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (employee == null)
             {
                 return NotFound();
@@ -55,7 +54,7 @@ namespace netCore.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EmployeeID,EmployeeName,PhoneNumber")] Employee employee)
+        public async Task<IActionResult> Create([Bind("EmployeeID,University,Id,Title")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -67,7 +66,7 @@ namespace netCore.Controllers
         }
 
         // GET: Employee/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -87,9 +86,9 @@ namespace netCore.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("EmployeeID,EmployeeName,PhoneNumber")] Employee employee)
+        public async Task<IActionResult> Edit(int id, [Bind("EmployeeID,University,Id,Title")] Employee employee)
         {
-            if (id != employee.EmployeeID)
+            if (id != employee.Id)
             {
                 return NotFound();
             }
@@ -103,7 +102,7 @@ namespace netCore.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EmployeeExists(employee.EmployeeID))
+                    if (!EmployeeExists(employee.Id))
                     {
                         return NotFound();
                     }
@@ -118,7 +117,7 @@ namespace netCore.Controllers
         }
 
         // GET: Employee/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -126,7 +125,7 @@ namespace netCore.Controllers
             }
 
             var employee = await _context.Employee
-                .FirstOrDefaultAsync(m => m.EmployeeID == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (employee == null)
             {
                 return NotFound();
@@ -138,7 +137,7 @@ namespace netCore.Controllers
         // POST: Employee/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var employee = await _context.Employee.FindAsync(id);
             _context.Employee.Remove(employee);
@@ -146,9 +145,9 @@ namespace netCore.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EmployeeExists(string id)
+        private bool EmployeeExists(int id)
         {
-            return _context.Employee.Any(e => e.EmployeeID == id);
+            return _context.Employee.Any(e => e.Id == id);
         }
     }
 }

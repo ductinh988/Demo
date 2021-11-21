@@ -46,5 +46,11 @@ namespace netCore.Data{
 
         public DbSet<netCore.Models.Product> Product { get; set; }
 
+
+
+    
+
+        public DbSet<netCore.Models.Account> Account { get; set; }
+
     }
 }
