@@ -14,7 +14,7 @@ namespace netCore.Data{
         {
         }
 
-        public DbSet<netCore.Models.Movie> Movie { get; set; }
+        
 
 
 
@@ -51,6 +51,12 @@ namespace netCore.Data{
     
 
         public DbSet<netCore.Models.Account> Account { get; set; }
+
+
+
+    
+
+        public DbSet<netCore.Models.Movie> Movie { get; set; }
 
     }
 }

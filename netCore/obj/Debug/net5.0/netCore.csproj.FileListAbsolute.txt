@@ -187,11 +187,6 @@ D:\NetCore\netCore\obj\Debug\net5.0\Razor\Views\Product\Delete.cshtml.g.cs
 D:\NetCore\netCore\obj\Debug\net5.0\Razor\Views\Product\Details.cshtml.g.cs
 D:\NetCore\netCore\obj\Debug\net5.0\Razor\Views\Product\Edit.cshtml.g.cs
 D:\NetCore\netCore\obj\Debug\net5.0\Razor\Views\Product\Index.cshtml.g.cs
-D:\NetCore\netCore\obj\Debug\net5.0\Razor\Views\Movies\Create.cshtml.g.cs
-D:\NetCore\netCore\obj\Debug\net5.0\Razor\Views\Movies\Delete.cshtml.g.cs
-D:\NetCore\netCore\obj\Debug\net5.0\Razor\Views\Movies\Details.cshtml.g.cs
-D:\NetCore\netCore\obj\Debug\net5.0\Razor\Views\Movies\Edit.cshtml.g.cs
-D:\NetCore\netCore\obj\Debug\net5.0\Razor\Views\Movies\Index.cshtml.g.cs
 D:\NetCore\netCore\obj\Debug\net5.0\Razor\Views\Employee\Create.cshtml.g.cs
 D:\NetCore\netCore\obj\Debug\net5.0\Razor\Views\Employee\Delete.cshtml.g.cs
 D:\NetCore\netCore\obj\Debug\net5.0\Razor\Views\Employee\Details.cshtml.g.cs
@@ -202,3 +197,8 @@ D:\NetCore\netCore\obj\Debug\net5.0\Razor\Views\Accounts\Delete.cshtml.g.cs
 D:\NetCore\netCore\obj\Debug\net5.0\Razor\Views\Accounts\Details.cshtml.g.cs
 D:\NetCore\netCore\obj\Debug\net5.0\Razor\Views\Accounts\Edit.cshtml.g.cs
 D:\NetCore\netCore\obj\Debug\net5.0\Razor\Views\Accounts\Index.cshtml.g.cs
+D:\NetCore\netCore\obj\Debug\net5.0\Razor\Views\Movies\Create.cshtml.g.cs
+D:\NetCore\netCore\obj\Debug\net5.0\Razor\Views\Movies\Delete.cshtml.g.cs
+D:\NetCore\netCore\obj\Debug\net5.0\Razor\Views\Movies\Details.cshtml.g.cs
+D:\NetCore\netCore\obj\Debug\net5.0\Razor\Views\Movies\Edit.cshtml.g.cs
+D:\NetCore\netCore\obj\Debug\net5.0\Razor\Views\Movies\Index.cshtml.g.cs
