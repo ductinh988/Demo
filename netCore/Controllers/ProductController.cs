@@ -19,13 +19,35 @@ namespace netCore.Controllers
             _context = context;
         }
 
-        // GET: Product
-        public async Task<IActionResult> Index()
+        // GET: Movies
+        public async Task<IActionResult> Index(string productGenre, string searchString)
         {
-            var mvcMovieContext = _context.Product.Include(p => p.Category);
-            return View(await mvcMovieContext.ToListAsync());
-        }
+            // Use LINQ to get list of genres.
+            IQueryable<string> genreQuery = from m in _context.Product
+                                            orderby m.CategoryID
+                                            select m.CategoryID;
 
+            var products = from m in _context.Product
+                           select m;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(s => s.ProductName.Contains(searchString));
+            }
+
+            if (!string.IsNullOrEmpty(productGenre))
+            {
+                products = products.Where(x => x.CategoryID == productGenre);
+            } 
+
+            var productGenreVM = new ProductGenre
+            {
+                CategoryID = new SelectList(await genreQuery.Distinct().ToListAsync()),
+                Products = await products.ToListAsync()
+            };
+
+            return View(productGenreVM);
+        }
         // GET: Product/Details/5
         public async Task<IActionResult> Details(string id)
         {

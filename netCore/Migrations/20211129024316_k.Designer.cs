@@ -9,8 +9,8 @@ using netCore.Data;
 namespace netCore.Migrations
 {
     [DbContext(typeof(MvcMovieContext))]
-    [Migration("20211126102636_he")]
-    partial class he
+    [Migration("20211129024316_k")]
+    partial class k
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -133,7 +133,7 @@ namespace netCore.Migrations
             modelBuilder.Entity("netCore.Models.Account", b =>
                 {
                     b.HasOne("netCore.Models.Category", "Category")
-                        .WithMany("Accounts")
+                        .WithMany()
                         .HasForeignKey("CategoryID");
 
                     b.Navigation("Category");
@@ -168,8 +168,6 @@ namespace netCore.Migrations
 
             modelBuilder.Entity("netCore.Models.Category", b =>
                 {
-                    b.Navigation("Accounts");
-
                     b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
